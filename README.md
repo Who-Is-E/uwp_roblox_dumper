@@ -1,5 +1,6 @@
 # roblox_uwp_dumper
-Address dumper for the UWP version of Roblox
+
+Dumps all the necessary offsets for my [UWP Executor](https://github.com/Spoorloos/uwp_executor)
 
 # Dependencies
 ```console
