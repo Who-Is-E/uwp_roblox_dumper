@@ -25,13 +25,12 @@ try:
     print("print         ", hex(scanFunc(process, b"\\xE8....\\x0F\\xBF\\x45\\xF8", True)))
 
     # Find offsets.
-    print("\n\033[1m" + "Other offsets:" + "\033[0m")
-
     top_base = pattern_scan_all(handle, b"\\x8B\\x47.\\x2B\\x47.\\xC1\\xF8\\x04\\x3B\\xC1")
+    extraspace_identity = pattern_scan_all(handle, b"\\x8B\\x47.\\x0F\\x10\\x40.\\x0F\\x11\\x85\\x68\\xFF\\xFF\\xFF")
+
+    print("\n\033[1m" + "Other offsets:" + "\033[0m")
     print("top           ", read_uchar(handle, top_base + 2))
     print("base          ", read_uchar(handle, top_base + 5))
-
-    extraspace_identity = pattern_scan_all(handle, b"\\x8B\\x47.\\x0F\\x10\\x40.\\x0F\\x11\\x85\\x68\\xFF\\xFF\\xFF")
     print("extra_space   ", read_uchar(handle, extraspace_identity + 2))
     print("identity      ", read_uchar(handle, extraspace_identity + 6))
 except:
