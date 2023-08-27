@@ -17,6 +17,7 @@ try:
     handle = process.process_handle
 
     # Find functions.
+    print("\033[1m" + "Function offsets:" + "\033[0m")
     print("get_scheduler ", hex(scanFunc(process, b"\\xE8....\\x8D\\x7E\\x68", True)))
     print("get_state     ", hex(scanFunc(process, b"\\xE8....\\x8B\\xF0\\x8D\\x8D\\xA8\\xFD\\xFF\\xFF", True)))
     print("luavm_load    ", hex(scanFunc(process, b"\\xE8....\\x8B\\xD0\\x64\\xA1", True)))
@@ -24,8 +25,10 @@ try:
     print("print         ", hex(scanFunc(process, b"\\xE8....\\x0F\\xBF\\x45\\xF8", True)))
 
     # Find offsets.
+    print("\n\033[1m" + "Other offsets:" + "\033[0m")
+
     top_base = pattern_scan_all(handle, b"\\x8B\\x47.\\x2B\\x47.\\xC1\\xF8\\x04\\x3B\\xC1")
-    print("\ntop           ", read_uchar(handle, top_base + 2))
+    print("top           ", read_uchar(handle, top_base + 2))
     print("base          ", read_uchar(handle, top_base + 5))
 
     extraspace_identity = pattern_scan_all(handle, b"\\x8B\\x47.\\x0F\\x10\\x40.\\x0F\\x11\\x85\\x68\\xFF\\xFF\\xFF")
