@@ -29,10 +29,10 @@ try:
     extraspace_identity = pattern_scan_all(handle, b"\\x8B\\x47.\\x0F\\x10\\x40.\\x0F\\x11\\x85\\x68\\xFF\\xFF\\xFF")
 
     print("\n\033[1mOther offsets:\033[0m")
-    print("top           " + read_uchar(handle, top_base + 2))
-    print("base          " + read_uchar(handle, top_base + 5))
-    print("extra_space   " + read_uchar(handle, extraspace_identity + 2))
-    print("identity      " + read_uchar(handle, extraspace_identity + 6))
+    print("top           " + str(read_uchar(handle, top_base + 2)))
+    print("base          " + str(read_uchar(handle, top_base + 5)))
+    print("extra_space   " + str(read_uchar(handle, extraspace_identity + 2)))
+    print("identity      " + str(read_uchar(handle, extraspace_identity + 6)))
 except:
     # This usually happens when roblox isn't opened or the patterns are wrong.
     print("Something went wrong, is roblox opened?")
